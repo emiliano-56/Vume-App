@@ -1,0 +1,348 @@
+body{
+  background-color: #f0f5f4 !important;
+  font-family: poppins;
+}
+
+
+
+.dashboard-title{
+  padding: 0 !important;
+  font-size: 24px !important;
+  font-weight: 700;
+}
+
+/* Custom CSS to remove shadow from hamburger icon */
+.navbar-toggler {
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* CSS Cards rules   */
+.card {
+    width: 220px !important; /* Adjust the width as needed */
+    height: 100px !important; /* Adjust the height as needed */
+    background-color: #ccc ;
+    padding: 0 !important;
+
+}
+
+
+
+.card-panel-1{
+  background-color: #5285e8 !important;
+  color: #ffff !important;
+}
+
+.card-panel-2{
+  background-color: #181818 !important;
+  color: #fff !important;
+}
+
+
+.card-panel-3{
+  background-color: #bbfb4c !important;
+  color: #fff !important;
+}
+
+
+
+
+
+/*  Quick Access here */
+.quick-link, .title{
+  text-align: start;
+  font-size: 18px !important;
+
+}
+
+
+/* Panel-quick-access section */
+.container-quick-access {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.quick-panel-edit {
+  width: 150px; /* Adjust the width as needed */
+  height: 200px; /* Adjust the height as needed */
+  background-color: #f0f0f0;
+  margin: 20px; 
+  overflow: hidden;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  transform: rotate(15deg); /* Adjust the rotation angle as needed */
+  padding: 0 !important;
+  font-size: 15px !important;
+  /* animation: smokeFlow 3s ease-out forwards infinite;  */
+}
+
+.circle {
+  position: absolute;
+  background-color: #ccc;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  /* Push circles behind cards */
+  /* animation: bounce 2.5s infinite;  */
+  animation: bounce 1s infinite;
+}
+
+.circle1 {
+  top: calc(50% - 0px); /* Adjust position for vertical centering */
+  left: calc(50% - 50px); /* Adjust position for horizontal centering */
+}
+
+@keyframes bounce {
+  0%, 100% {
+      transform: translateY(0); /* Start and end position (no change) */
+  }
+  50% {
+      transform: translateY(-20px); /* Midway position (move up) */
+  }
+}
+
+.content-edit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #333;
+}
+
+.icon-edit {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.text-edit {
+  font-size: 16px;
+}
+
+.text-edit, .quick-link-access {
+  text-decoration: none;
+  color: #333 !important;
+}
+
+
+/*  Quick Access section */
+.quick-access-title {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 55px !important;
+}
+
+.quick-access-icon {
+  font-size: 4rem;
+  text-align: center;
+}
+
+.quick-access-link{
+  text-decoration: none;
+  color: #333 !important;
+}
+
+
+#button{
+  background-color: #ccc !important;
+  color: #333 !important;
+  border: 0 !important;
+}
+
+
+.button-cgpa{
+  background-color: #ccc !important;
+  color: #333 !important;
+  border: 0 !important;
+ 
+}
+
+#icon-1{
+background-color: #5285e8 !important;
+color: #ffff !important;
+}
+
+#icon-2{
+  /* background-color: #181818 !important; */
+  color: #181818 !important;
+  }
+
+  .sub-text{
+    color: #bbfb4c;
+  }
+
+.some-part{
+  background-color: #181818 !important;
+  color: #ffff !important;
+  padding: 1px 3px;
+  border-radius: 5px;
+}
+
+
+
+
+/* Add custom CSS here */
+
+.center-input {
+position: relative;
+float: -20px !important;
+    
+  }
+
+@media (min-width: 992px) {
+  .menu-toggle {
+    display: none;
+  }
+}
+
+.widget-container {
+  position: fixed;
+  bottom: 150px;
+  right: 20px;
+}
+.modal-body {
+  text-align: center;
+}
+
+/* Centering the brand */
+.navbar-brand {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.widget-container {
+position: fixed;
+bottom: 150px;
+right: 20px;
+}
+.modal-body{
+text-align: center;
+}
+
+
+.menu-icon{
+margin-top: 5px !important;
+text-align: center;
+position: absolute;
+left: 30px;
+}
+
+/* Style for the footer */
+.footer {
+/* background-color: #333; */
+text-align: center;
+padding: 20px;
+left: 0;
+bottom: 0;
+width: 100%;
+}
+
+
+.small-navbar{
+text-align: left;
+padding: 5px 10px !important;
+margin-top: 15px !important;
+}
+
+
+.small-navbar a{
+text-decoration: none !important;
+color: #ffff !important;
+margin-top: 27px !important;
+margin: 10px !important;
+font-size: 18px !important;
+}
+
+
+@media(width<=768px){
+footer{
+display: none !important;
+}
+
+}
+@media(width<=990px){
+  footer{
+  display: none !important;
+  }
+  
+  }
+  
+#top-navbar{
+display: flex;
+flex-direction: row;
+flex-wrap: nowrap;
+
+
+}
+
+@media(width<=295px){
+#top-navbar, .navbar-dark{
+min-width: max-content;
+}
+
+.me{
+display: flex !important;
+flex-direction: row-reverse !important;
+}
+}
+
+@media(width>=992px){
+.small-navbar a{
+display: none !important;
+}
+
+.dark-mode{
+display: none !important;
+}
+
+
+}
+
+
+
+@media(width<=992px){
+
+.center-input {
+    display: none !important;
+
+  }
+
+}
+
+
+/* #menu-icon{ */
+  /* background-color: #181818; */
+  /* color: #fff; */
+/* } */
+
+
+/* .bottom-navbar{ */
+  /* background-color: #181818; */
+  /* border-radius: 67rem; */
+  /* color: #ccc !important; */
+/*  */
+  /* width: 67%; */
+/* margin-left: auto; */
+/* margin-right: auto; */
+/* display: block; */
+/* } */
+/*  */
+/*  */
+/*  */
+.brand-1{
+  color: #181818 !important;
+  background-color: #bbfb4c;
+  border-radius: 50%;
+  padding: 10px 25px;
+}
+/*  */
+/*  */
+/*  */
+/* .brand-2{ */
+  /* color: #ccc !important; */
+  /* background-color: #303030; */
+  /* border-radius: 50%; */
+  /* padding: 10px 25px; */
+/* } */

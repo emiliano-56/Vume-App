@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vume App-GPA, CGPA & Results</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <!-- Font Awesome CSS for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="code.css">
+<link rel="stylesheet" href="/css/main.css">
+<style>
+#dashboard-panel-grid{
+  display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-template-rows: repeat(3, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+
+}
+
+@media(width<=768px){
+  #dashboard-panel-grid{
+    display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: repeat(2, 1fr);
+grid-column-gap: 5px;
+grid-row-gap: 5px;
+  }
+
+.dashboard-title{
+  text-align: center;
+  font-size: medium;
+}
+
+.section-title{
+  font-size: medium;
+  font-weight: bolder;
+}
+
+
+
+
+}
+
+@media(width<=475px){
+  #dashboard-panel-grid{
+    display: grid;
+grid-template-columns: 1fr;
+grid-template-rows: 1fr;
+grid-column-gap: 45px;
+grid-row-gap: 45px;
+justify-content: center !important;
+margin: 50px auto !important; /* Center horizontally with auto margin */
+    max-width: 90% !important; /* Limit maximum width */
+  }
+
+}
+
+
+
+
+
+
+
+.grid-container {
+    display: grid;
+    justify-content: center; /* Center the grid items horizontally */
+  }
+</style>
+</head>
+<body>
+  <!-- ====Top Navbar start here==== -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+<!-- Hamburger Menu Icon with Custom SVG -->
+  <!-- Hamburger Menu Icon -->
+  <button class="navbar-toggler menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+      <!-- Logo -->
+      <a class="navbar-brand" href="#">Vume</a>
+  <!-- ====Top Navbar start here==== -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="top-navbar">
+    <div class="container">
+      
+      <!-- Input Field (Centered) -->
+      <div class="center-input d-flex justify-content-center flex-grow-1">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      </div>
+
+<!-- Profile Avatar with Dropdown -->
+<div class="dropdown me">
+  <img src="./img/avatar-icon.jpg" width="45" class="rounded-circle dropdown-toggle" id="avatarDropdown" data-bs-toggle="dropdown" aria-expanded="false" alt="User Avatar">
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="avatarDropdown">
+    <li><label for="avatarInput" class="dropdown-item"><i class="fas fa-user-edit"></i> Change</label></li>
+    <hr>
+    <li><a class="dropdown-item" href="#" id="deleteAvatar"><i class="fas fa-user-edit"></i> Delete</a></li>
+    <hr>
+    <li><a class="dropdown-item text-danger" href="#" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+  </ul>
+</div>
+<!-- Hidden avatar input -->
+<input type="file" id="avatarInput" accept="image/jpeg, image/png" style="display: none;">
+
+    </div>
+  </nav>
+<!--====Top navbar Ends====-->
+ 
+    </div>
+
+
+      <!-- Dark Mode Toggle -->
+      <div class="collapse navbar-collapse small-navbar p-5" id="navbarNav">
+
+        <ul class="navbar-nav ms-auto">
+          <a href="/results.html">Check Results</a>
+          <a href="/GPA.html">GPA Calculations</a>
+          <a href="/cgpa.html">CGPA Calculations</a>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!--====Top navbar Ends====-->
+<!---===Main section starts here-->
+<main>
+  <h4 class="text-black mt-4 mb-0 dashboard-title h2 ml-3">DASHBOARD</h4>
+ <!--=====Panels begins here========-->
+ <div class="container mt-2 grid-container">
+  <div class="row justify-content-center" id="dashboard-panel-grid">
+    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+      <div class="card bg-primary text-white card-panel-1 ">
+        <div class="card-body">
+          <h5 class="card-title"> <i class="fas fa-graduation-cap panel-icons"></i> Anonymous GPA</h5>
+          <p class="card-text gpa-container" id="gpaContainer"> 
+            <!-- Array of GPA goes here -->
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+      <div class="card bg-secondary text-white card-panel-2">
+        <div class="card-body">
+          <h5 class="card-title"> <i class="fas fa-chart-line panel-icons"></i> CGPA</h5>
+          <p class="card-text cgpa-container" id="cgpaContainer">
+            <!-- CGPA Anonymous Display goes here -->
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+      <div class="card bg-secondary text-white">
+        <div class="card-body">
+          <h5 class="card-title"> <i class="fas fa-chalkboard-teacher panel-icons"></i> Lecturers</h5>
+          <p class="card-text lecturer-container" id="lecturerContainer">
+            <!-- Lecturers Goes here -->
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!---=====End of panels here====-->
+
+<!---Quick Access Links begin here-->
+<div class="container mt-4">
+  <h2 class="quick-access-title text-center">Quick Access</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+      <a href="/GPA.html" class="quick-icon" id="icon-1"><i class="fas fa-graduation-cap fa-3x mb-2"></i></a>
+      <p class="mb-4 sub-text">GPA</p>
+    </div>
+    <div class="col-md-6 text-center">
+    <a href="/results.html" class="quick-icon" id="icon-2"><i class="fas fa-poll fa-3x mb-2"></i></a>
+      <p class="mb-4 ">Results</p>
+    </div>
+  </div>
+</div>
+
+<!--===Ends here====-->
+
+
+<!----=====Course Reps Accross all levels======= -->
+
+<div class="container mt-3">
+  <h2 class="text-center">Course Reps across all levels</h2>
+  <p class="text-center">Meet Course Reps across all levels.</p>
+
+  <table id="dynamic-table" class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th>Names</th>
+        <!-- <th>Image</th> -->
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Mary</td>
+        <!-- <td><img src="john_image.jpg" alt="John's Image"></td> -->
+        <td>Active</td>
+      </tr>
+      <tr>
+        <td>Raphael</td>
+       <!--  <td><img src="mary_image.jpg" alt="Mary's Image"></td> -->
+        <td>Active</td>
+      </tr>
+      <tr>
+        <td>Ofunu</td>
+        <!-- <td><img src="july_image.jpg" alt="July's Image"></td> -->
+        <td>Active</td>
+      </tr>
+      <tr>
+        <td>Jeremiah</td>
+      <!--   <td><img src="jane_image.jpg" alt="Jane's Image"></td> -->
+        <td>Active</td>
+      </tr>
+      <tr>
+        <td>Abraham</td>
+       <!--  <td><img src="alice_image.jpg" alt="Alice's Image"></td> -->
+        <td>Active</td>
+      </tr>
+      <tr>
+        <td>Faith</td>
+       <!--  <td><img src="bob_image.jpg" alt="Bob's Image"></td> -->
+        <td>Active</td>
+      </tr>
+
+      <tr>
+        <td>Michael</td>
+       <!--  <td><img src="bob_image.jpg" alt="Bob's Image"></td> -->
+        <td>Active</td>
+      </tr>
+
+      <tr>
+        <td>Deborah</td>
+        <!-- <td><img src="bob_image.jpg" alt="Bob's Image"></td> -->
+        <td>Active</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--===Ends here====-->
+
+<!-- Previous GPA Trends section -->
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8">
+        <h2 class="h4 font-weight-bold">Student GPA Performance -Area <span class="some-part">Chart</span></h2>
+        <canvas id="gpaChart"></canvas>
+      </div>
+    </div>
+  </div>
+  
+  
+
+
+
+<!---===Toast of greetings=====-->
+
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="greetingModal" tabindex="-1" aria-labelledby="greetingModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="greetingModalLabel">Greetings</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="/toastImg/IMG-20240222-WA0000.jpg" class="rounded-circle mr-2" alt="Greeting Image" width="45">
+        <span id="greeting-text">Nice day here!</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--====Ends here====-->
+
+
+
+
+</main>
+<!----====Main section End-->
+
+<br><br><br><br><br><br>
+  <!--====Bottom Section Starts-->
+  <!-- Bottom Navbar (visible on <=768px) -->
+  <nav class="navbar navbar-dark bg-dark  d-lg-none fixed-bottom bottom-navbar">
+    <div class="container justify-content-around">
+      <a class="navbar-brand brand-1" href="/main.html"><i class="fas fa-home"></i></a>
+      <a class="navbar-brand brand-2" href="/GPA.html"> <i class="fas fa-graduation-cap "></i> </a>
+      <a class="navbar-brand brand-2" href="/results.html"> <i class="fas fa-university "></i> </a>
+    </div>
+  </nav>
+<!--=====Bottom Section Ends-->
+
+
+
+<!-- Footer Section  Start -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2024 Vume. All rights reserved.</p>
+  </div>
+</footer>
+<!---=====Footer section Ends-->
+
+
+
+<!---=====Js Code for user profiles-->
+<script src="/javascript/userProfiles.js" type="module"></script>
+<script src="/javascript/userAuth.js" type="module"></script>
+
+
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!---===== GPA ,CGPA and Lecturers Display Anonymously===-->
+<script src="/javascript/gpaDisplay.js"></script>
+<script src="/javascript/cgpaDisplay.js"></script>
+<script src="/javascript/Lecturers.js"></script>
+<script src="/javascript/chart.js"></script>
+<script src="/javascript/table.js"></script>
+<script src="/javascript/Toast.js"></script>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<!-- FontAwesome Script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
